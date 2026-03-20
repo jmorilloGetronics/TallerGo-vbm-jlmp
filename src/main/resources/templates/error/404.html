@@ -7,16 +7,17 @@
 <header th:replace="fragments/header :: header"></header>
 
 
-<main class="list-page">
-    <div class="list-card">
+<main class="error-page">
+    <section class="error-shell" data-code="404">
+        <span class="hero-badge"><i class="bi bi-signpost-split"></i> Ruta no encontrada</span>
+        <h1>La pagina que buscas no existe o ya no esta disponible.</h1>
+        <p>Vuelve al panel principal o regresa a la vista anterior para seguir trabajando sin perder el contexto.</p>
 
-
-        <h1 class="mb-2">404</h1>
-        <p class="text-muted mb-4">No se ha encontrado la página que buscas.</p>
-
-
-        <a class="btn btn-primary" th:href="@{/}">Volver al inicio</a>
-    </div>
+        <div class="error-actions">
+            <a class="btn btn-primary" th:href="@{/}">Ir al inicio</a>
+            <a class="btn btn-secondary" href="javascript:history.back()">Volver</a>
+        </div>
+    </section>
 </main>
 
 

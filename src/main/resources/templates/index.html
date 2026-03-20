@@ -6,13 +6,74 @@
 
 <header th:replace="~{fragments/header :: header}"></header>
 
-<main class="position-relative bg-light" style="height: 100vh;">
-    <div class="position-absolute top-50 start-50 translate-middle text-center">
-        <h1 class="display-4 fw-bold">Taller Go</h1>
-        <p class="lead text-muted">
-            <strong>VIDAL - LEO</strong> - Aplicación web para la gestión de talleres.
+<main class="hero">
+    <section class="hero-panel">
+        <span class="hero-badge"><i class="bi bi-lightning-charge-fill"></i> Operativa conectada del taller</span>
+        <h1>Gestiona <span>vehiculos, marcas y equipo</span> desde una sola interfaz.</h1>
+        <p class="hero-subtitle">
+            Taller Go centraliza el dia a dia del taller con una experiencia mas limpia, rapida y lista para trabajar con datos reales.
         </p>
-    </div>
+
+        <div class="hero-actions">
+            <a th:href="@{/vehicles}" class="btn btn-primary">
+                <i class="bi bi-car-front-fill"></i>
+                <span>Ver vehiculos</span>
+            </a>
+            <a th:href="@{/mechanics}" class="btn btn-outline-light hero-alt">
+                <i class="bi bi-wrench-adjustable-circle"></i>
+                <span>Equipo mecanico</span>
+            </a>
+        </div>
+
+        <div class="hero-metrics">
+            <article class="metric-card">
+                <span class="metric-value" data-count="4">0</span>
+                <span class="metric-label">modulos clave</span>
+            </article>
+            <article class="metric-card">
+                <span class="metric-value" data-count="24">0</span>
+                <span class="metric-label">acciones operativas</span>
+            </article>
+            <article class="metric-card">
+                <span class="metric-value" data-count="100">0</span>
+                <span class="metric-label">flujo preparado</span>
+            </article>
+        </div>
+    </section>
+
+    <section class="hero-grid">
+        <a th:href="@{/workshops}" class="feature-card">
+            <i class="bi bi-buildings"></i>
+            <div>
+                <h2>Talleres</h2>
+                <p>Controla ubicacion, horario y disponibilidad del negocio.</p>
+            </div>
+        </a>
+
+        <a th:href="@{/brands}" class="feature-card">
+            <i class="bi bi-badge-ad"></i>
+            <div>
+                <h2>Marcas</h2>
+                <p>Ordena el catalogo y vincula vehiculos con informacion clara.</p>
+            </div>
+        </a>
+
+        <a th:href="@{/vehicles}" class="feature-card">
+            <i class="bi bi-car-front"></i>
+            <div>
+                <h2>Vehiculos</h2>
+                <p>Consulta rapidamente fichas, matriculas y datos tecnicos.</p>
+            </div>
+        </a>
+
+        <a th:href="@{/users}" class="feature-card">
+            <i class="bi bi-people"></i>
+            <div>
+                <h2>Usuarios</h2>
+                <p>Gestiona perfiles, permisos y acceso a la plataforma.</p>
+            </div>
+        </a>
+    </section>
 </main>
 
 <footer th:replace="~{fragments/footer :: footer}"></footer>

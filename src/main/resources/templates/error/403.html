@@ -9,38 +9,22 @@
 <header th:replace="fragments/header :: header"></header>
 
 
-<main class="form-page">
-    <div class="form-card text-center">
+<main class="error-page">
+    <section class="error-shell" data-code="403">
+        <span class="hero-badge"><i class="bi bi-shield-lock"></i> Acceso restringido</span>
+        <h1>No tienes permisos para entrar en esta seccion.</h1>
+        <p>Comprueba tus credenciales o vuelve a una zona valida de la aplicacion. Si esto no deberia ocurrir, revisa tus permisos.</p>
 
-
-        <h1 class="mb-2">403</h1>
-        <p class="text-muted mb-3">Acceso denegado</p>
-
-
-        <div class="alert alert-warning text-start">
-            <p class="mb-1">
-                No tienes permisos para acceder a este recurso.
-            </p>
-            <p class="mb-0">
-                Si crees que es un error, contacta con el administrador.
-            </p>
+        <div class="error-actions">
+            <a class="btn btn-primary" th:href="@{/}">Volver al inicio</a>
+            <a class="btn btn-secondary" href="javascript:history.back()">Volver atras</a>
         </div>
 
-
-        <!-- Info opcional (útil en desarrollo). Puedes quitarlo si no lo quieres -->
-        <div class="small text-muted mt-3">
+        <div class="error-meta">
             <div><strong>Ruta:</strong> <span th:text="${path}">/ruta</span></div>
             <div><strong>Fecha:</strong> <span th:text="${timestamp}">timestamp</span></div>
         </div>
-
-
-        <div class="mt-4 d-flex justify-content-center gap-2">
-            <a class="btn btn-primary" th:href="@{/}">Volver al inicio</a>
-            <a class="btn btn-secondary" href="javascript:history.back()">Volver atrás</a>
-        </div>
-
-
-    </div>
+    </section>
 </main>
 
 

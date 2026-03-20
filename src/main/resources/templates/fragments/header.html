@@ -1,7 +1,10 @@
 <header th:fragment="header" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" th:href="@{/}" th:text="#{msg.title}">Taller Go</a>
+            <a class="navbar-brand" th:href="@{/}">
+                <span class="brand-mark"></span>
+                <span class="brand-text" th:text="#{msg.title}">Taller Go</span>
+            </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,55 +12,78 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/}" th:text="#{msg.nav.home}">Inicio</a>
+                        <a class="nav-link" th:href="@{/}">
+                            <i class="bi bi-house-door"></i>
+                            <span th:text="#{msg.nav.home}">Inicio</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/mechanics}" th:text="#{msg.nav.mecanicos}">Mecánicos</a>
+                        <a class="nav-link" th:href="@{/mechanics}">
+                            <i class="bi bi-wrench-adjustable-circle"></i>
+                            <span th:text="#{msg.nav.mecanicos}">Mecanicos</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/workshops}" th:text="#{msg.nav.workshops}">Talleres</a>
+                        <a class="nav-link" th:href="@{/workshops}">
+                            <i class="bi bi-buildings"></i>
+                            <span th:text="#{msg.nav.workshops}">Talleres</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/brands}" th:text="#{msg.header.brands}">Marcas</a>
+                        <a class="nav-link" th:href="@{/brands}">
+                            <i class="bi bi-badge-ad"></i>
+                            <span th:text="#{msg.header.brands}">Marcas</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/vehicles}" th:text="#{msg.header.vehicles}">Vehículos</a>
+                        <a class="nav-link" th:href="@{/vehicles}">
+                            <i class="bi bi-car-front"></i>
+                            <span th:text="#{msg.header.vehicles}">Vehiculos</span>
+                        </a>
                     </li>
                     <li class="nav-item" sec:authorize="hasRole('ADMIN')">
-                        <a class="nav-link text-warning" th:href="@{/users}" th:text="#{msg.header.users}">Usuarios</a>
+                        <a class="nav-link nav-link-admin" th:href="@{/users}">
+                            <i class="bi bi-people"></i>
+                            <span th:text="#{msg.header.users}">Usuarios</span>
+                        </a>
                     </li>
                 </ul>
 
-                <form method="get" class="d-flex align-items-center me-3" th:action="@{/}">
-                    <select id="langSelect" name="lang" class="form-select form-select-sm" onchange="this.form.submit()">
-                        <option value="es" th:selected="${#locale.language == 'es'}">ES</option>
-                        <option value="en" th:selected="${#locale.language == 'en'}">EN</option>
-                    </select>
-                </form>
+                <div class="nav-meta ms-lg-auto">
+                    <form method="get" class="lang-switch" th:action="@{/}">
+                        <select id="langSelect" name="lang" class="form-select form-select-sm" onchange="this.form.submit()" aria-label="Idioma">
+                            <option value="es" th:selected="${#locale.language == 'es'}">ES</option>
+                            <option value="en" th:selected="${#locale.language == 'en'}">EN</option>
+                        </select>
+                    </form>
 
-                <div class="dropdown text-end" sec:authorize="isAuthenticated()">
-                    <a href="#" class="d-block link-light text-decoration-none dropdown-toggle"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="small me-2" sec:authentication="name">usuario@email.com</span>
-                        <img th:src="@{/images/avatar.svg}" alt="avatar" width="32" height="32" class="rounded-circle border">
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end text-small shadow">
-                        <li><a class="dropdown-item" th:href="@{/profile/edit}" th:text="#{menu.editProfile}">Perfil</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li>
-                            <form th:action="@{/logout}" method="post" class="m-0">
-                                <button type="submit" class="dropdown-item text-danger" th:text="#{menu.logout}">
-                                    Salir
-                                </button>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
+                    <div class="dropdown text-end" sec:authorize="isAuthenticated()">
+                        <a href="#" class="avatar-chip text-decoration-none dropdown-toggle"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            <img th:src="@{/images/avatar.svg}" alt="avatar">
+                            <span class="avatar-copy">
+                                <small>Sesion activa</small>
+                                <span class="avatar-name" sec:authentication="name">usuario@email.com</span>
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end text-small shadow">
+                            <li><a class="dropdown-item" th:href="@{/profile/edit}" th:text="#{menu.editProfile}">Perfil</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <form th:action="@{/logout}" method="post" class="m-0">
+                                    <button type="submit" class="dropdown-item text-danger" th:text="#{menu.logout}">
+                                        Salir
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
 
-                <div sec:authorize="!isAuthenticated()">
-                    <a th:href="@{/login}" class="btn btn-outline-light btn-sm" th:text="#{spring.security.ui.login.submit}">Entrar</a>
+                    <div sec:authorize="!isAuthenticated()">
+                        <a th:href="@{/login}" class="btn btn-outline-light nav-login-btn" th:text="#{spring.security.ui.login.submit}">Entrar</a>
+                    </div>
                 </div>
 
             </div>

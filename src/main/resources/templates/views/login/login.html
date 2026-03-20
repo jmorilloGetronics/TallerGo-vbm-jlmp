@@ -6,10 +6,13 @@
 
 <header th:replace="~{fragments/header :: header}"></header>
 
-<main class="form-page">
-    <div class="form-card">
-
-        <h1 th:text="#{spring.security.ui.login.title} ?: 'Iniciar Sesión'"></h1>
+<main class="login-page">
+    <section class="login-card">
+        <div class="brand-header">
+            <span class="hero-badge"><i class="bi bi-shield-lock"></i> Acceso seguro</span>
+            <h1>Taller <span>Go</span></h1>
+            <p>Entra en tu espacio de trabajo con una interfaz moderna, clara y preparada para el ritmo diario del taller.</p>
+        </div>
 
         <div th:if="${errorMessage}" class="alert alert-danger">
             <p th:text="${errorMessage}"></p>
@@ -45,24 +48,18 @@
             </div>
 
             <button type="submit"
-                    class="btn btn-primary w-100"
+                    class="btn-login"
                     th:text="#{spring.security.ui.login.submit} ?: 'Entrar'">
             </button>
 
-            <div class="text-center my-3">
-                <hr>
-                <span class="px-2 text-muted">O también</span>
-            </div>
+            <div class="login-divider"><span>o continua con</span></div>
 
-            <div class="row justify-content-center">
-                <div class="col-12">
-                    <a th:href="@{/oauth2/authorization/github}" class="btn btn-dark w-100">
-                        <i class="bi bi-github me-2"></i> Iniciar sesión con GitHub
-                    </a>
-                </div>
-            </div>
+            <a th:href="@{/oauth2/authorization/github}" class="btn-github text-decoration-none">
+                <i class="bi bi-github"></i>
+                <span>Iniciar sesion con GitHub</span>
+            </a>
 
-            <div class="d-flex justify-content-between mt-4">
+            <div class="login-links">
                 <a th:href="@{/register}" class="btn btn-link btn-sm p-0"
                    th:text="#{spring.security.ui.login.register} ?: 'Crear cuenta'"></a>
 
@@ -71,7 +68,7 @@
             </div>
 
         </form>
-    </div>
+    </section>
 </main>
 
 <footer th:replace="~{fragments/footer :: footer}"></footer>
